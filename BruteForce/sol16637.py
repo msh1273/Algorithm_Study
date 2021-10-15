@@ -1,15 +1,32 @@
-n = int(input('몇글자?: '))
-expression = input('수식 입력: ')
+from sys import stdin
 
-print(expression)
+def dfs(i, result):
+    global answer
 
-def cal (a, b, operator):
-    if operator == "+":
-        return a+b
-    elif operator == "-":
-        return a-b
-    elif operator == "*":
-        return a*b
+    if i == len(op):
+        answer = max(answer, int(result))
+        return
+
+    seq = str(eval(result + op[i] + number[i+1]))
+    dfs(i+1, seq)
+
+    if i+1 < len(op):
+        bracket = str(eval(number[i+1] + op[i+1] + number[i+2]))
+        bracket = str(eval(result + op[i] + bracket))
+        dfs(i+2, bracket)
 
 if __name__ == '__main__':
-    n = int(stdin.read)
+    n = int(stdin.readline())
+    expression = stdin.readline()
+
+    number = []
+    op = []
+    answer = -2**31
+    for i in expression:
+        if i.isdigit():
+            number.append(i)
+        else:
+            op.append(i)
+    op = op[:-1]
+    dfs(0, number[0])
+    print(answer)
