@@ -21,16 +21,16 @@ def bfs(chess, currentPoint):
     queue = deque()
     queue.append(currentPoint)
     while queue:
-        temp = queue.popleft()
-        for i in move:
-            currentPoint = temp
-            movePoint = tuple(sum(elem) for elem in zip(currentPoint, i))
-            if movePoint[0] <= 7 and movePoint[0] >= 0 and movePoint[1] <= 7 and movePoint[1] >= 0:
-                if chess[movePoint[0]][movePoint[1]] != '#' and chess[movePoint[0]-1][movePoint[1]] != '#':
-                    if movePoint[0] == 0:
-                        print(queue)
-                        return 1
-                    queue.append(movePoint)
+        for _ in range(len(queue)):
+            temp = queue.popleft()
+            for i in move:
+                currentPoint = temp
+                movePoint = tuple(sum(elem) for elem in zip(currentPoint, i))
+                if movePoint[0] <= 7 and movePoint[0] >= 0 and movePoint[1] <= 7 and movePoint[1] >= 0:
+                    if chess[movePoint[0]][movePoint[1]] != '#' and chess[movePoint[0]-1][movePoint[1]] != '#':
+                        if movePoint[0] == 0:
+                            return 1
+                        queue.append(movePoint)
         moveWall(chess)
     return 0
 
