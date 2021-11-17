@@ -14,7 +14,6 @@ for _ in range(N):
 
 
 carrot = sorted(carrot, key=lambda x: [-x[1], -x[0]])
-print(carrot)
 
 taste = 0
 
