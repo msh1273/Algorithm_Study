@@ -22,22 +22,18 @@ for i in range(n):
 
 def checkStarCount(i, j, size, visited):
     count = 0
-    answer = ""
+    answer = []
     for s in range(1, size+1):
         if board[i-s][j] == '*' and board[i+s][j] == '*' and board[i][j-s] == '*' and board[i][j+s] == '*':
             count = 1
-            answer = list([i+1, j+1, s])
+            answer = [i+1, j+1, s]
             visited[i][j] = 0
             visited[i-s][j] = 0
             visited[i+s][j] = 0
             visited[i][j-s] = 0
             visited[i][j+s] = 0
         else:
-            if count == 0:
-                return 0, False
-            else:
-                return 1, answer
-
+            return 1, answer
     return count, answer
 
 
@@ -48,12 +44,9 @@ for i in range(1, n-1):
             # 가능한 최대 사이즈
             size = min(i, n-i-1, j, m-j-1)
             Acount, Aanswer = checkStarCount(i, j, size, visited)
-            if Aanswer != False:
+            if Aanswer:
                 answer.append(Aanswer)
                 count += Acount
-            #count += checkStarCount(i, j, size, visited)
-
-# answer = sorted(answer, key=lambda x: (x[0], x[1], -x[2]))
 
 _sum = 0
 for i in visited:
