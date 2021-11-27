@@ -28,7 +28,7 @@ for i in range(n):
     graph = list(map(int, sys.stdin.readline().rstrip().split()))
     for j in range(len(graph)):
         if graph[j] == 1:
-            union(i, j)
+            union(parent[i], parent[j])
 
 que = []
 que = list(map(int, sys.stdin.readline().rstrip().split()))
@@ -40,7 +40,7 @@ temp = find(que[0])
 
 def answer(que, temp):
     for i in range(len(que)):
-        if find(i) != temp:
+        if find(que[i]) != temp:
             return "NO"
     return "YES"
 
