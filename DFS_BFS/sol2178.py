@@ -6,16 +6,12 @@ n, m = map(int, sys.stdin.readline().rstrip().split())
 #미로 초기화
 maze = [[0 for _ in range(m)] for _ in range(n) ]
 
-#방문 기록
-visited = [0 for _ in range(m) for _ in range(n)]
-
 # 미로 입력
 for i in range(n):
     temp = list(map(int, sys.stdin.readline().rstrip()))
     for j in range(m):
         if temp[j] == 1:
             maze[i][j] = 1
-
 
 def bfs(x, y):
     # 상, 하, 좌, 우
