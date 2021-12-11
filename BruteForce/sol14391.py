@@ -1,5 +1,4 @@
 import sys
-import itertools
 
 input = sys.stdin.readline
 
@@ -20,7 +19,7 @@ for i in range(1 << n*m):
         for col in range(m):
             # idx는 2차원 행렬을 1줄로 만들었을때의 인덱스
             idx = row*m + col
-            if i & (1 << idx) != 0: #(1이면 가로로 더한다)
+            if i & (1 << idx) != 0: #(0아니면 가로로 더한다)
                 rowsum = rowsum * 10 + paper[row][col]
             else:
                 total += rowsum
