@@ -10,8 +10,7 @@ def bt(num):
         print(' '.join(map(str, ans)))
         return
     for i in range(num, n+1):
-        if i not in ans:
-            ans.append(i)
-            bt(i+1)
-            ans.pop()
+        ans.append(i)
+        bt(i+1)
+        ans.pop()
 bt(1)
