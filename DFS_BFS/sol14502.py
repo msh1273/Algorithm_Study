@@ -14,14 +14,17 @@ for i in range(n):
 mx = [-1,1,0,0]
 my = [0,0,-1,1]
 
+#벽이 들어 갈 수 있는 좌표(x, y)를 canWall 리스트에 담는다.
 canWall = []
 for i in range(n):
     for j in range(m):
         if lab[i][j] == 0:
             canWall.append((i,j))
 
+#canWall리스트에서 3개씩 조합한다.
 wa = list(combinations(canWall, 3))
 
+#바이러스가 퍼지는 bfs
 def bfs(temp, row, col):
     queue = deque()
     queue.append((row,col))
@@ -35,6 +38,7 @@ def bfs(temp, row, col):
                 queue.append((nrow, ncol))
                 temp[nrow][ncol] = 2
     return temp
+
 
 answer = []
 
