@@ -4,4 +4,4 @@
 💡 [BeakJoon Online Judge](https://www.acmicpc.net/) <br>
 🔨 Language: Python <br>
 🗓 During: 2021.10.19 ~ ing <br>
-📕 Ref: 
+📕 Ref: [WorkBook](https://github.com/tony9402/baekjoon)
